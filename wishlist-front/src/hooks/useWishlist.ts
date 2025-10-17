@@ -6,7 +6,16 @@ export function useWishlist() {
 
   useEffect(() => {
     const stored = localStorage.getItem("wishlist");
-    if (stored) setWishlist(JSON.parse(stored));
+    if (stored) {
+      try {
+        setWishlist(JSON.parse(stored));
+      } catch (e) {
+        // If corrupted, ignore and start with empty wishlist
+        console.warn("Invalid wishlist data in localStorage, resetting to empty.", e);
+        setWishlist([]);
+        localStorage.removeItem("wishlist");
+      }
+    }
   }, []);
 
   function saveWishlist(newList: Product[]) {

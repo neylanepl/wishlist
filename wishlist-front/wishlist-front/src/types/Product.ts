@@ -11,3 +11,10 @@ export interface Product {
     description: string;
   };
 }
+
+export interface ProductsResponse {
+  total: number;
+  pageSize: number;
+  totalPages: number;
+  products: Product[];
+}

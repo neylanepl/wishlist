@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Product } from "../types/Product";
-import { getProducts } from "../service/products";
+import { getProducts } from "../services/productService";
 import ProductCard from "../components/ProductCard";
 import { useWishlist } from "../hooks/useWishlist";
 

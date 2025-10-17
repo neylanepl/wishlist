@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Minha Wishlist 🛍️</h1>
+      <h1> Home </h1>
       <div className="grid">
         {products.map((p) => (
           <ProductCard

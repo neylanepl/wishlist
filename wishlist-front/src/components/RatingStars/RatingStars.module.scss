@@ -32,8 +32,9 @@
 }
 
 .value {
-  margin-left: 6px;
-  font-size: 0.9rem;
+  font-size: 14px;
   color: $ns-gray-700;
   font-weight: 500;
+  position: relative;
+  top: 1px;
 }

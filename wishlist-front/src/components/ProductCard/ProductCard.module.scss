@@ -2,6 +2,9 @@
 @use "../../styles/_mixins" as *;
 
 .card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   background: $ns-white;
   border: 1px solid $ns-gray-200;
   border-radius: $radius-md;
@@ -62,31 +65,13 @@
 .name {
   font-size: 14px;
   color: $ns-gray-500;
-  margin: 8px 0 6px;
-  min-height: 38px; /* duas linhas aproximadas */
-}
-
-.rating {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-bottom: 8px;
-
-  .stars {
-    color: $ns-yellow; /* amarelo estrela */
-    letter-spacing: 1px;
-  }
-
-  .value {
-    font-size: 12px;
-    color: $ns-gray-500;
-  }
+  margin: 0px;
+  min-height: 38px;
 }
 
 .prices {
   display: flex;
   flex-direction: column;
-  gap: 4px;
 
   .old {
     font-size: 12px;

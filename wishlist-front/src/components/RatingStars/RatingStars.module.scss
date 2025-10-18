@@ -1,0 +1,37 @@
+@use "../../styles/_variables" as *;
+@use "../../styles/_mixins" as *;
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star {
+  font-size: 16px;
+  color: #ccc; // estrelas vazias
+  position: relative;
+  display: inline-block;
+
+  &.full {
+    color: #f5b301; // estrela cheia
+  }
+
+  &.half {
+    color: #ccc; // base cinza
+    &::before {
+      content: "★";
+      color: #f5b301; // metade amarela
+      position: absolute;
+      left: 0;
+      width: 50%;
+      overflow: hidden;
+    }
+  }
+}
+
+.value {
+  margin-left: 6px;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+}

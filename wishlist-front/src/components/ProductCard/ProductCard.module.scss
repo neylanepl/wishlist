@@ -6,11 +6,12 @@
   flex-direction: column;
   gap: 8px;
   background: $ns-white;
-  border: 1px solid $ns-gray-200;
-  border-radius: $radius-md;
+  border: none;
+  border-radius: $radius-sm;
   padding: 12px;
   position: relative;
   transition: box-shadow 0.2s ease;
+
   @include card-shadow;
 }
 

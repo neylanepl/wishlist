@@ -1,0 +1,115 @@
+@use "../../styles/_variables" as *;
+@use "../../styles/_mixins" as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $ns-purple;
+  padding: 24px 90px;
+  color: $ns-white;
+  position: relative;
+}
+
+.logo img {
+  height: 26px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+.wishlist {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: $ns-white;
+  text-decoration: none;
+
+  .iconHeart {
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    path {
+      stroke: $ns-white;
+      fill: none;
+    }
+  }
+
+  &:hover {
+    color: $ns-white;
+  }
+}
+
+.profileBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $ns-white;
+  border: none;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  padding: 2px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.profile {
+  position: relative;
+  cursor: pointer;
+
+  .iconUser {
+    font-size: 12px;
+    width: 25px;
+    height: 25px;
+    path {
+      stroke: $ns-purple;
+      fill: $ns-purple;
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 28px;
+    right: 0;
+    background: $ns-white;
+    color: #333;
+    border-radius: 6px;
+    box-shadow: 0px 1px 4px 1px $ns-gray-300;
+    list-style: none;
+    padding: 4px 0px;
+    min-width: 140px;
+    z-index: 10;
+
+     /* puxadinho (setinha) */
+    &::before {
+    position: absolute;
+    top: -12px;
+    right: 2%;
+    display: inline-block;
+    border-right: 13px solid transparent;
+    border-bottom: 13px solid #fff;
+    border-left: 13px solid transparent;
+    border-bottom-color: #fff;
+    content: '';
+}
+
+    li {
+      padding: 1px 10px;
+
+      a {
+        text-decoration: none;
+        color: #333;
+        display: block;
+
+        &:hover {
+          background-color: #f3f3f3;
+        }
+      }
+    }
+  }
+}

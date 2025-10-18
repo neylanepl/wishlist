@@ -3,17 +3,17 @@
 @use "../../styles/global";
 
 .home {
-  padding: 16px 80px;
+  padding: 16px 90px;
 
   h1 {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
-    margin: 0 0 16px;
+    margin: 12px 0px 24px 0px;
     color: $ns-purple;
   }
 
   .separator {
-    height: 1px;
+    height: 2px;
     background: $ns-gray-200;
     margin: 8px 0 20px;
   }

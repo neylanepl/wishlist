@@ -20,9 +20,9 @@ export default function NavBar() {
 
         <div
           className={styles.profile}
-          onClick={() => setMenuOpen(!menuOpen)}
+          onMouseEnter={() => setMenuOpen(true)}
+          onMouseLeave={() => setMenuOpen(false)}
           tabIndex={0}
-          onBlur={() => setMenuOpen(false)}
         >
           {<button className={styles.profileBtn}><ProfileIcon className={styles.iconUser} /></button>}
         

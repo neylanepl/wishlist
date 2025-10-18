@@ -9,7 +9,7 @@ export default function Home() {
   const { wishlist, toggleProduct } = useWishlist();
 
   return (
-    <div>
+    <div className={styles.container}>
       <NavBar />
       <div className={styles.home}>
         <h1>Home</h1>

@@ -2,33 +2,43 @@
 @use "../../styles/_mixins" as *;
 @use "../../styles/global";
 
+.container {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
 .home {
-  padding: 16px 90px;
+  margin: 1.5rem 5.625%;
 
   h1 {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
-    margin: 12px 0px 24px 0px;
+    margin: 1.5rem 0;
     color: $ns-purple;
   }
 
   .separator {
-    height: 2px;
+    height: 0.125rem;
     background: $ns-gray-200;
-    margin: 8px 0 20px;
+    margin: 0.5rem 0 1.25rem;
   }
 
   .grid {
-    padding: 16px 60px;
+    padding: 1rem 3.75%;
     @include grid-responsive;
   }
 
   .state {
-    padding: 24px 0;
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0;
     color: $ns-gray-500;
   }
 
   .error {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0;
     color: $ns-danger;
   }
 }

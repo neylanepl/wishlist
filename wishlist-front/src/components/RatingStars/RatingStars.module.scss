@@ -3,16 +3,16 @@
 .rating {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .star {
-  font-size: 16px;
+  font-size: 1rem;
   color: $ns-gray-200;
   position: relative;
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   color: $ns-yellow;
   display: block;
   &:not(.half) {
@@ -32,9 +32,9 @@
 }
 
 .value {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: $ns-gray-700;
   font-weight: 500;
   position: relative;
-  top: 1px;
+  top: 0.0625rem;
 }

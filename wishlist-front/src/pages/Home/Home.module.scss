@@ -1,0 +1,33 @@
+@use "../../styles/_variables" as *;
+@use "../../styles/_mixins" as *;
+@use "../../styles/global";
+
+.home {
+  padding: 16px 24px;
+
+  h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 16px;
+    color: $ns-purple;
+  }
+
+  .separator {
+    height: 1px;
+    background: $ns-gray-200;
+    margin: 8px 0 20px;
+  }
+
+  .grid {
+    @include grid-responsive;
+  }
+
+  .state {
+    padding: 24px 0;
+    color: $ns-gray-500;
+  }
+
+  .error {
+    color: $ns-danger;
+  }
+}

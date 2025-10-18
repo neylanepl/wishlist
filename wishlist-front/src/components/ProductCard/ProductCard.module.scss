@@ -22,13 +22,17 @@
   background: $ns-gray-200;
   border-radius: $radius-lg;
   cursor: pointer;
-  padding: 12px;
-  width: 40px; 
-  height: 40px;
+  padding: 4px;
 
   &.active {
-    color: $ns-white;
     background: $ns-danger;
+
+    .heartIcon {
+      width: 22px;
+      height: 22px;
+      fill: $ns-white;
+      filter: brightness(0) invert(1);
+    }
   }
 
   &:focus {
@@ -36,6 +40,16 @@
   }
 }
 
+.heartIcon {
+  width: 22px;
+  height: 22px;
+  display: block;
+  color: inherit;
+  path {
+    stroke: currentColor;
+    fill: none;
+  }
+}
 
 .image {
   display: block;

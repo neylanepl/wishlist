@@ -8,30 +8,32 @@
 
 .star {
   font-size: 16px;
-  color: #ccc; // estrelas vazias
+  color: $ns-gray-200;
   position: relative;
   display: inline-block;
-
-  &.full {
-    color: #f5b301; // estrela cheia
-  }
-
-  &.half {
-    color: #ccc; // base cinza
-    &::before {
-      content: "★";
-      color: #f5b301; // metade amarela
-      position: absolute;
-      left: 0;
-      width: 50%;
-      overflow: hidden;
+  width: 20px;
+  height: 20px;
+  color: $ns-yellow;
+  display: block;
+  &:not(.half) {
+    path {
+      stroke: $ns-gray-200;
+      fill: $ns-gray-200;
     }
   }
+
+  &.full {
+    path{
+      fill: currentColor;
+      stroke: currentColor;
+    }
+  }
+
 }
 
 .value {
   margin-left: 6px;
   font-size: 0.9rem;
-  color: #333;
+  color: $ns-gray-700;
   font-weight: 500;
 }

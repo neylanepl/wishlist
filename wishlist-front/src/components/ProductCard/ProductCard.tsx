@@ -1,6 +1,7 @@
 import type { Product } from "../../types/Product";
 import styles from "./ProductCard.module.scss";
 import RatingStars from "../RatingStars/RatingStars";
+import HeartIcon from "../../assets/icons/heart.svg?react";
 
 interface ProductCardProps {
   product: Product;
@@ -20,7 +21,7 @@ export default function ProductCard({ product, isSaved, onToggle }: ProductCardP
         className={`${styles.wishlistBtn} ${isSaved ? styles.active : ""}`}
         onClick={() => onToggle(product)}
       >
-        ♡
+        <HeartIcon className={styles.heartIcon} />
       </button>
 
       <img

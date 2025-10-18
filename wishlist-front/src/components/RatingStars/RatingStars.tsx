@@ -1,4 +1,6 @@
 import styles from "./RatingStars.module.scss";
+import RatingIcon from "../../assets/icons/rating.svg?react";
+import HalfRatingIcon from "../../assets/icons/half-rating.svg?react";
 
 interface RatingStarsProps {
   value: number; // Ex: 3.5
@@ -18,7 +20,11 @@ export default function RatingStars({ value, max = 5 }: RatingStarsProps) {
             key={star}
             className={`${styles.star} ${full ? styles.full : ""} ${half ? styles.half : ""}`}
           >
-            ★
+            {!half ? (
+              <RatingIcon className={styles.star} />
+            ) : (
+              <HalfRatingIcon className={`${styles.star} ${styles.half}`} />
+            )}
           </span>
         );
       })}

@@ -2,14 +2,16 @@ import type { Product } from "../../types/Product";
 import styles from "./ProductCard.module.scss";
 import RatingStars from "../RatingStars/RatingStars";
 import HeartIcon from "../../assets/icons/heart.svg?react";
+import RemoveIcon from "../../assets/icons/remove.svg?react";
 
 interface ProductCardProps {
   product: Product;
   isSaved: boolean;
   onToggle: (product: Product) => void;
+  isWishlistPage?: boolean;
 }
 
-export default function ProductCard({ product, isSaved, onToggle }: ProductCardProps) {
+export default function ProductCard({ product, isSaved, onToggle, isWishlistPage = false }: ProductCardProps) {
   const price = Number(product.priceInCents) / 100;
   const salePrice = Number(product.salePriceInCents) / 100;
   const hasDiscount = salePrice > 0 && salePrice < price;
@@ -17,11 +19,16 @@ export default function ProductCard({ product, isSaved, onToggle }: ProductCardP
   return (
     <article className={styles.card} aria-label={product.name}>
       <button
-        aria-label={isSaved ? "Remover da wishlist" : "Salvar na wishlist"}
-        className={`${styles.wishlistBtn} ${isSaved ? styles.active : ""}`}
+        aria-label={isWishlistPage ? "Remover da wishlist" : (isSaved ? "Remover da wishlist" : "Salvar na wishlist")}
+        className={`${styles.wishlistBtn} ${isSaved ? styles.active : ""} 
+        ${isWishlistPage ? styles.removeMode : ""}`}
         onClick={() => onToggle(product)}
       >
-        <HeartIcon className={styles.heartIcon} />
+        {isWishlistPage ? (
+          <RemoveIcon className={styles.removeIcon} />
+        ) : (
+          <HeartIcon className={styles.heartIcon} />
+        )}
       </button>
 
       <img

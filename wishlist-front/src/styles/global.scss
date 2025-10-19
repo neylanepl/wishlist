@@ -6,6 +6,8 @@
 }
 
 html, body {
+  width: 100%;
+  overflow-x: hidden;
   font-family: $font-main;
   background: $ns-white;
   color: $ns-gray-700;
@@ -20,8 +22,8 @@ a {
 
 .visually-hidden {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0.0625rem;
+  height: 0.0625rem;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
+  clip: rect(0.0625rem, 0.0625rem, 0.0625rem, 0.0625rem);
 }

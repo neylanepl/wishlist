@@ -1,0 +1,40 @@
+@use "../../styles/_variables" as *;
+@use "../../styles/_mixins" as *;
+@use "../../styles/global";
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: $ns-purple;
+
+  .item {
+    display: flex;
+    align-items: center;
+
+    a {
+      color: $ns-purple;
+      text-decoration: none;
+      font-size: 1rem;
+      margin-bottom: 1.3rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+
+  }
+
+  .active {
+    color: $ns-purple;
+    margin-bottom: 1.3rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .separator {
+    margin: 0 0.2rem 1.3rem;
+    color: $ns-purple;
+  }
+}

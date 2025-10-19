@@ -9,7 +9,11 @@ export default function Home() {
   const { wishlist, toggleProduct } = useWishlist();
 
   return (
-    <MainLayout title="Home">
+    <MainLayout 
+                breadcrumbItems={[
+                  { label: "Home", to: "/" },
+                ]}
+    >
       {isLoading && <p className={styles.state}>Carregando produtos...</p>}
       {error && <p className={`${styles.state} ${styles.error}`}>{error}</p>}
 

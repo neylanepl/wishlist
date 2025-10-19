@@ -78,9 +78,9 @@
     top: 1.75rem;
     right: 0;
     background: $ns-white;
-    color: #333;
-    border-radius: 6px;
-    box-shadow: 0px 0.0625rem 0.25rem 0.0625rem $ns-gray-300;
+    color: $ns-gray-900;
+    border-radius: $radius-md;
+    box-shadow: 0 0.0625rem 0.25rem 0.0625rem $ns-gray-300;
     list-style: none;
     padding: 0.5rem 0;
     min-width: 7.6rem;
@@ -104,7 +104,7 @@
 
       a {
         text-decoration: none;
-        color: #333;
+        color: $ns-gray-900;
         display: block;
 
         &:hover {

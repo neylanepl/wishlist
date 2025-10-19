@@ -24,7 +24,7 @@ export default function NavBar() {
           onMouseLeave={() => setMenuOpen(false)}
           tabIndex={0}
         >
-          {<button className={styles.profileBtn}><ProfileIcon className={styles.iconUser} /></button>}
+          <button className={styles.profileBtn}><ProfileIcon className={styles.iconUser} /></button>
         
           {menuOpen && (
             <ul className={styles.dropdown}>

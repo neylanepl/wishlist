@@ -14,7 +14,7 @@ export default function NavBar() {
 
       <div className={styles.actions}>
         <a href="#" className={styles.wishlist}>
-          {<HeartIcon className={styles.iconHeart} />}
+          <HeartIcon className={styles.iconHeart} />
           Wishlist
         </a>
 

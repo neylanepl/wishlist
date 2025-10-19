@@ -20,10 +20,13 @@ export default function RatingStars({ value, max = 5 }: RatingStarsProps) {
             key={star}
             className={`${styles.star} ${full ? styles.full : ""} ${half ? styles.half : ""}`}
           >
-            {!half ? (
-              <RatingIcon className={styles.star} />
+            {half ? (
+              <HalfRatingIcon role="img" aria-label="star half" className={`${styles.star} ${styles.half}`} />
+            ) : full ? (
+              <RatingIcon role="img" aria-label="star full" className={styles.star} />
             ) : (
-              <HalfRatingIcon className={`${styles.star} ${styles.half}`} />
+              // empty star: same SVG as RatingIcon but marked as empty for accessibility
+              <RatingIcon role="img" aria-label="empty star" className={styles.star} />
             )}
           </span>
         );

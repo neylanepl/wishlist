@@ -2,43 +2,22 @@
 @use "../../styles/_mixins" as *;
 @use "../../styles/global";
 
-.container {
-  min-height: 100vh;
-  min-width: 100vw;
+.grid {
+  padding: 1rem 3.75%;
+  @include grid-responsive;
 }
 
-.home {
-  margin: 1.5rem 5.625%;
-
-  h1 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 1.5rem 0;
-    color: $ns-purple;
-  }
-
-  .separator {
-    height: 0.125rem;
-    background: $ns-gray-200;
-    margin: 0.5rem 0 1.25rem;
-  }
-
-  .grid {
-    padding: 1rem 3.75%;
-    @include grid-responsive;
-  }
-
-  .state {
-    display: flex;
-    justify-content: center;
-    padding: 1.5rem 0;
-    color: $ns-gray-500;
-  }
-
-  .error {
-    display: flex;
-    justify-content: center;
-    padding: 1.5rem 0;
-    color: $ns-danger;
-  }
+.state {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
+  color: $ns-gray-500;
 }
+
+.error {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
+  color: $ns-danger;
+}
+

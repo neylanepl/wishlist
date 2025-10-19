@@ -19,7 +19,7 @@ export default function ProductCard({ product, isSaved, onToggle, isWishlistPage
   return (
     <article className={styles.card} aria-label={product.name}>
       <button
-        aria-label={isSaved ? "Remover da wishlist" : "Salvar na wishlist"}
+        aria-label={isWishlistPage ? "Remover da wishlist" : (isSaved ? "Remover da wishlist" : "Salvar na wishlist")}
         className={`${styles.wishlistBtn} ${isSaved ? styles.active : ""} 
         ${isWishlistPage ? styles.removeMode : ""}`}
         onClick={() => onToggle(product)}

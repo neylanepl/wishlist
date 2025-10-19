@@ -24,11 +24,14 @@ export default function NavBar() {
           onMouseEnter={() => setMenuOpen(true)}
           onMouseLeave={() => setMenuOpen(false)}
           tabIndex={0}
+          aria-label="perfil"
+          aria-haspopup="true"
+          aria-expanded={menuOpen}
         >
-          <button className={styles.profileBtn}><ProfileIcon className={styles.iconUser} /></button>
+          <button className={styles.profileBtn} aria-label="Abrir menu de perfil"><ProfileIcon className={styles.iconUser} /></button>
         
           {menuOpen && (
-            <ul className={styles.dropdown}>
+            <ul className={styles.dropdown} role="menu" aria-label="menu de perfil">
               <li><a href="#">Entrar</a></li>
               <li><a href="#">Minha Conta</a></li>
               <li><a href="#">Endereços</a></li>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./NavBar.module.scss";
 import LogoNetshoes from "../../assets/logo-netshoes.svg"; 
 import HeartIcon from "../../assets/icons/heart.svg?react";

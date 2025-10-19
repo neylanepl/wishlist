@@ -53,7 +53,7 @@ describe("Breadcrumb", () => {
 
     renderBreadcrumb(items);
 
-    const lastItem = screen.getByText("Details");
-    expect(lastItem).toHaveClass(styles.item);
+  const lastItem = screen.getByText("Details");
+  expect(lastItem.parentElement).toHaveClass(styles.item);
   });
 });

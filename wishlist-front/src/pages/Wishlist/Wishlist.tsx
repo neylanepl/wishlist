@@ -25,6 +25,7 @@ export default function Wishlist() {
               product={product}
               isSaved={true}
               onToggle={toggleProduct}
+              isWishlistPage={true}
             />
           ))}
         </div>

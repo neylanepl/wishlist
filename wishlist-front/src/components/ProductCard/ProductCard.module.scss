@@ -39,6 +39,22 @@
     }
   }
 
+  &.removeMode {
+    background: transparent;
+    color: $ns-gray-900;
+
+    .removeIcon {
+      width: 1.375rem;
+      height: 1.375rem;
+      display: block;
+
+      path {
+        stroke: currentColor;
+        fill: $ns-gray-900;
+      }
+    }
+  }
+
   &:focus {
     outline: none;
   }

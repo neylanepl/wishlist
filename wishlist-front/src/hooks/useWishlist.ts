@@ -8,9 +8,6 @@ export function useWishlist(): { wishlist: Product[]; toggleProduct: (product: P
     if (!raw) return [];
     try {
       const parsed = JSON.parse(raw) as unknown[];
-
-      // Normalize every persisted item — normalizeProduct handles both DTOs (strings)
-      // and already-normalized domain products (numbers).
       return parsed.map(normalizeProduct);
     } catch (e) {
       console.warn("Invalid wishlist data in localStorage, resetting to empty.", e);

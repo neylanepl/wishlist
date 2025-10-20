@@ -2,7 +2,12 @@ import { useEffect, useState, useCallback } from "react";
 import { getProducts } from "../services/productService";
 import type { Product } from "../types/Product";
 
-export function useProducts() {
+export function useProducts(): {
+  products: Product[];
+  isLoading: boolean;
+  error: string | null;
+  refetch: () => Promise<void>;
+} {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

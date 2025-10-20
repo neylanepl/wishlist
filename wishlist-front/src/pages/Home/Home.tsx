@@ -6,8 +6,8 @@ import { useProducts } from "../../hooks/useProducts";
 import styles from "./Home.module.scss";
 
 export default function Home() {
-  const { products, isLoading, error }: { products: Product[]; isLoading: boolean; error: string | null } = useProducts();
-  const { wishlistCodes, toggleProduct }: { wishlistCodes: ReadonlySet<string>; toggleProduct: (product: Product) => void } = useWishlist();
+  const { products, isLoading, error } = useProducts();
+  const { wishlistCodes, toggleProduct } = useWishlist();
 
   return (
     <MainLayout 

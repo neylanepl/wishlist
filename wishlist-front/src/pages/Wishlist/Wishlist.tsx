@@ -5,7 +5,7 @@ import { useWishlist } from "../../hooks/useWishlist";
 import styles from "./Wishlist.module.scss";
 
 export default function Wishlist() {
-  const { wishlist, toggleProduct }: { wishlist: Product[]; toggleProduct: (product: Product) => void } = useWishlist();
+  const { wishlist, toggleProduct } = useWishlist();
 
   return (
     <MainLayout 

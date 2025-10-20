@@ -2,7 +2,13 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import type { Product } from "../types/product";
 import { normalizeProduct } from "../utils/formatters";
 
-export function useWishlist(): { wishlist: Product[]; wishlistCodes: ReadonlySet<string>; toggleProduct: (product: Product) => void } {
+export type UseWishlistReturn = {
+  wishlist: Product[];
+  wishlistCodes: ReadonlySet<string>;
+  toggleProduct: (product: Product) => void;
+};
+
+export function useWishlist(): UseWishlistReturn {
   const [wishlist, setWishlist] = useState<Product[]>(() => {
     const raw = localStorage.getItem("wishlist");
     if (!raw) return [];

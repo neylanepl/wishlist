@@ -3,6 +3,13 @@ import type { ProductsResponseDTO } from "../types/Product";
 import type { ProductsResponse } from "../types/Product";
 import { normalizeProduct } from "../utils/formatters";
 
+const EMPTY_RESPONSE: ProductsResponse = {
+  total: 0,
+  pageSize: 0,
+  totalPages: 0,
+  products: [],
+};
+
 export async function getProducts(): Promise<ProductsResponse> {
   try {
     const response = await api.get<ProductsResponseDTO>("/products");
@@ -10,12 +17,7 @@ export async function getProducts(): Promise<ProductsResponse> {
 
     if (!Array.isArray(data.products)) {
       console.warn("Formato inválido: 'products' não é um array.");
-      return {
-        total: 0,
-        pageSize: 0,
-        totalPages: 0,
-        products: [],
-      };
+      return EMPTY_RESPONSE;
     }
 
     const normalized = data.products.map(normalizeProduct);
@@ -28,11 +30,6 @@ export async function getProducts(): Promise<ProductsResponse> {
     };
   } catch (error) {
     console.error("Erro ao buscar produtos:", error);
-    return {
-      total: 0,
-      pageSize: 0,
-      totalPages: 0,
-      products: [],
-    };
+    return EMPTY_RESPONSE;
   }
 }

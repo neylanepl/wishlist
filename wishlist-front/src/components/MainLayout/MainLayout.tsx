@@ -1,12 +1,8 @@
 import React from "react";
 import NavBar from "../NavBar/NavBar";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
+import type { BreadcrumbItem } from "../Breadcrumb/Breadcrumb";
 import styles from "./MainLayout.module.scss";
-
-type BreadcrumbItem = {
-  label: string;
-  to?: string;
-};
 
 type MainLayoutProps = {
   breadcrumbItems: BreadcrumbItem[]; // itens do breadcrumb

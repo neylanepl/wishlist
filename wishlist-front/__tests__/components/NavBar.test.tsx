@@ -23,7 +23,7 @@ describe("NavBar", () => {
     render(<NavBar />, { wrapper: MemoryRouter });
 
     // o botão do perfil é filho direto do container com tabIndex=0
-    const profileButton = screen.getByRole("button");
+  const profileButton = screen.getByLabelText(/Abrir menu de perfil/i);
     const profileContainer = profileButton.parentElement as HTMLElement;
     expect(profileContainer).toBeTruthy();
 
@@ -40,14 +40,18 @@ describe("NavBar", () => {
   expect(screen.queryByText(/Entrar/i)).toBeNull();
   });
 
-  it("o container de perfil é focusable (tabIndex=0) e clicar no botão não abre o menu", () => {
+  it("container de perfil não tem tabIndex e botão abre/fecha o menu ao clicar", () => {
     render(<NavBar />, { wrapper: MemoryRouter });
 
-    const profileButton = screen.getByRole("button");
+    const profileButton = screen.getByLabelText(/Abrir menu de perfil/i);
     const profileContainer = profileButton.parentElement as HTMLElement;
-  expect(profileContainer.getAttribute("tabindex")).toBe("0");
+    // container não precisa mais de tabIndex porque o botão é focusable por padrão
+  expect(profileContainer.getAttribute("tabindex")).toBeNull();
 
-    // clicar no botão não altera o estado do menu (comportamento atual)
+    // clicar no botão agora abre/fecha o menu
+    fireEvent.click(profileButton);
+  expect(screen.getByText(/Entrar/i)).toBeTruthy();
+    // clicar novamente fecha o menu
     fireEvent.click(profileButton);
   expect(screen.queryByText(/Entrar/i)).toBeNull();
   });

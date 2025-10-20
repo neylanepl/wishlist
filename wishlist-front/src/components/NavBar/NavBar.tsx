@@ -10,13 +10,11 @@ export default function NavBar() {
       <div className={styles.logo}>
         <img src={LogoNetshoes} alt="Netshoes" />
       </div>
-
       <div className={styles.actions}>
         <Link to="/wishlist" className={styles.wishlist}>
           <HeartIcon className={styles.iconHeart} />
           Wishlist
         </Link>
-
         <ProfileMenu />
       </div>
     </header>

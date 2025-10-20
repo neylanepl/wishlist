@@ -50,8 +50,8 @@ function ProductCard({ product, isSaved, onToggle, isWishlistPage = false }: Pro
       <RatingStars value={product.rating} />
 
       <div className={styles.prices}>
-  {hasDiscount && <span className={styles.old}>{formatCurrency(product.priceInCents)}</span>}
-  <span className={styles.current}>{formatCurrency(hasDiscount ? product.salePriceInCents : product.priceInCents)}</span>
+        {hasDiscount && <span className={styles.old}>{formatCurrency(product.priceInCents)}</span>}
+        <span className={styles.current}>{formatCurrency(hasDiscount ? product.salePriceInCents : product.priceInCents)}</span>
       </div>
     </article>
   );

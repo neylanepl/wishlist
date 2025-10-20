@@ -102,14 +102,30 @@
     li {
       padding: 0.0625rem 0.625rem;
 
-      a {
+      a,
+      button {
         text-decoration: none;
         color: $ns-gray-900;
         display: block;
 
-        &:hover {
-          color: $ns-purple;
-        }
+        /* Reset native button styles so buttons look like links */
+        background: transparent;
+        border: none;
+        padding: 0;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      a:hover,
+      button:hover {
+        color: $ns-purple;
+      }
+
+      a:hover,
+      button:focus {
+        outline: none;
       }
     }
   }

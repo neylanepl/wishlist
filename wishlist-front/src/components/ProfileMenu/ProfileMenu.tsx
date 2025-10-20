@@ -21,10 +21,18 @@ export default function ProfileMenu() {
 
       {menuOpen && (
         <ul className={styles.dropdown} role="menu" aria-label="menu de perfil">
-          <li><a role="menuitem" href="#">Entrar</a></li>
-          <li><a role="menuitem" href="#">Minha Conta</a></li>
-          <li><a role="menuitem" href="#">Endereços</a></li>
-          <li><a role="menuitem" href="#">Minha Netshoes</a></li>
+          <li>
+            <button role="menuitem" type="button">Entrar</button>
+          </li>
+          <li>
+            <button role="menuitem" type="button">Minha Conta</button>
+          </li>
+          <li>
+            <button role="menuitem" type="button">Endereços</button>
+          </li>
+          <li>
+            <button role="menuitem" type="button">Minha Netshoes</button>
+          </li>
         </ul>
       )}
     </div>

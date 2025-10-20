@@ -23,6 +23,8 @@ function ProductCard({ product, isSaved, onToggle, isWishlistPage = false }: Pro
   return (
     <article className={styles.card} aria-label={product.name}>
       <button
+        type="button"
+        aria-pressed={isSaved}
         aria-label={isWishlistPage ? "Remover da wishlist" : (isSaved ? "Remover da wishlist" : "Salvar na wishlist")}
         className={`${styles.wishlistBtn} ${isSaved ? styles.active : ""} 
         ${isWishlistPage ? styles.removeMode : ""}`}

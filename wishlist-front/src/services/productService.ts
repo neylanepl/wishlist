@@ -1,7 +1,7 @@
 import { api } from "./api";
 import type { ProductsResponseDTO } from "../types/Product";
 import type { ProductsResponse } from "../types/Product";
-import { normalizeProduct } from "../types/Product";
+import { normalizeProduct } from "../utils/formatters";
 
 export async function getProducts(): Promise<ProductsResponse> {
   try {

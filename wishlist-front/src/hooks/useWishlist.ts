@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import type { Product } from "../types/Product";
-import { normalizeProduct } from "../types/Product";
+import { normalizeProduct } from "../utils/formatters";
 
 export function useWishlist(): { wishlist: Product[]; toggleProduct: (product: Product) => void } {
   const [wishlist, setWishlist] = useState<Product[]>(() => {

@@ -1,4 +1,4 @@
-import type { Product } from "../../types/Product";
+import type { Product } from "../../types/product";
 import { memo, useCallback } from "react";
 import styles from "./ProductCard.module.scss";
 import RatingStars from "../RatingStars/RatingStars";

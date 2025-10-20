@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { getProducts } from "../services/productService";
-import type { Product } from "../types/Product";
+import type { Product } from "../types/product";
 
 export function useProducts(): {
   products: Product[];

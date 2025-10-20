@@ -1,6 +1,6 @@
 import { api } from "./api";
-import type { ProductsResponseDTO } from "../types/Product";
-import type { ProductsResponse } from "../types/Product";
+import type { ProductsResponseDTO } from "../types/product";
+import type { ProductsResponse } from "../types/product";
 import { normalizeProduct } from "../utils/formatters";
 
 const EMPTY_RESPONSE: ProductsResponse = {

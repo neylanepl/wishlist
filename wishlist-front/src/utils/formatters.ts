@@ -1,4 +1,4 @@
-import type { Product } from "../types/Product";
+import type { Product } from "../types/product";
 
 function toNumber(v: unknown): number {
   if (typeof v === "number") return v as number;

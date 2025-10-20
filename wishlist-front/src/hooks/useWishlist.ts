@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import type { Product } from "../types/Product";
+import type { Product } from "../types/product";
 import { normalizeProduct } from "../utils/formatters";
 
 export function useWishlist(): { wishlist: Product[]; wishlistCodes: ReadonlySet<string>; toggleProduct: (product: Product) => void } {

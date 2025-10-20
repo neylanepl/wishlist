@@ -25,7 +25,10 @@ const renderStarIcon = (type: "full" | "half" | "empty") => {
 };
 
 export default function RatingStars({ value, max = 5 }: RatingStarsProps) {
-  const stars = Array.from({ length: max }, (_, i) => i + 1);
+  const stars: number[] = [];
+  for (let i = 1; i <= max; i++) {
+    stars.push(i);
+  }
 
   return (
     <div className={styles.rating} aria-label={`Avaliação ${value} de ${max}`}>

@@ -7,26 +7,6 @@ import styles from "./Wishlist.module.scss";
 export default function Wishlist() {
   const { wishlist, toggleProduct }: { wishlist: Product[]; toggleProduct: (product: Product) => void } = useWishlist();
 
-  function renderWishlist() {
-    if (wishlist.length === 0) {
-      return <p className={styles.state}>Nenhum produto salvo na wishlist.</p>;
-    }
-
-    return (
-      <div className={styles.grid}>
-        {wishlist.map((product: Product) => (
-          <ProductCard
-            key={product.code}
-            product={product}
-            isSaved
-            onToggle={toggleProduct}
-            isWishlistPage
-          />
-        ))}
-      </div>
-    );
-  }
-
   return (
     <MainLayout 
       breadcrumbItems={[
@@ -34,7 +14,21 @@ export default function Wishlist() {
         { label: "Wishlist", to: "/wishlist" },
       ]}
     >
-      {renderWishlist()}
+      {wishlist.length === 0 ? (
+        <p className={styles.state}>Nenhum produto salvo na wishlist.</p>
+      ) : (
+        <div className={styles.grid}>
+          {wishlist.map((product: Product) => (
+            <ProductCard
+              key={product.code}
+              product={product}
+              isSaved
+              onToggle={toggleProduct}
+              isWishlistPage
+            />
+          ))}
+        </div>
+      )}
     </MainLayout>
   );
 }

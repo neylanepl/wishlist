@@ -20,7 +20,8 @@ export function formatCurrency(
     return new Intl.NumberFormat(locale, { style: "currency", currency }).format(value);
   } catch {
     const symbol = currency === "BRL" ? "R$ " : "";
-    return symbol + value.toFixed(2);
+    const str = value.toFixed(2);
+    return currency === "BRL" ? symbol + str.replace(".", ",") : symbol + str;
   }
 }
 

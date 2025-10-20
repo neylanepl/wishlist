@@ -2,6 +2,7 @@ import type { Product } from "../../types/Product";
 import { memo, useCallback } from "react";
 import styles from "./ProductCard.module.scss";
 import RatingStars from "../RatingStars/RatingStars";
+import { formatCurrency } from "../../utils/formatters";
 import HeartIcon from "../../assets/icons/heart.svg?react";
 import RemoveIcon from "../../assets/icons/remove.svg?react";
 
@@ -16,9 +17,9 @@ export default memo(ProductCard);
 
 function ProductCard({ product, isSaved, onToggle, isWishlistPage = false }: ProductCardProps) {
   const handleToggle = useCallback(() => onToggle(product), [onToggle, product]);
-  const price = product.priceInCents / 100;
-  const salePrice = product.salePriceInCents / 100;
-  const hasDiscount = salePrice > 0 && salePrice < price;
+  const priceInCents = product.priceInCents;
+  const salePriceInCents = product.salePriceInCents;
+  const hasDiscount = salePriceInCents > 0 && salePriceInCents < priceInCents;
 
   return (
     <article className={styles.card} aria-label={product.name}>
@@ -49,8 +50,8 @@ function ProductCard({ product, isSaved, onToggle, isWishlistPage = false }: Pro
       <RatingStars value={product.rating} />
 
       <div className={styles.prices}>
-        {hasDiscount && <span className={styles.old}>R$ {price.toFixed(2)}</span>}
-        <span className={styles.current}>R$ {(hasDiscount ? salePrice : price).toFixed(2)}</span>
+  {hasDiscount && <span className={styles.old}>{formatCurrency(product.priceInCents)}</span>}
+  <span className={styles.current}>{formatCurrency(hasDiscount ? product.salePriceInCents : product.priceInCents)}</span>
       </div>
     </article>
   );

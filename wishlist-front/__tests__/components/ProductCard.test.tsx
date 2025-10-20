@@ -29,7 +29,7 @@ describe("ProductCard", () => {
     );
 
     expect(screen.getByText("Test Product")).toBeInTheDocument();
-    expect(screen.getByText("R$ 100.00")).toBeInTheDocument();
+  expect(screen.getByText("R$ 100,00")).toBeInTheDocument();
     expect(screen.getByAltText("Test Product")).toBeInTheDocument();
   });
 
@@ -42,8 +42,8 @@ describe("ProductCard", () => {
       />
     );
 
-    expect(screen.getByText("R$ 100.00")).toBeInTheDocument();
-    expect(screen.getByText("R$ 80.00")).toBeInTheDocument();
+  expect(screen.getByText("R$ 100,00")).toBeInTheDocument();
+  expect(screen.getByText("R$ 80,00")).toBeInTheDocument();
   });
 
   it("chama onToggle quando o botão da wishlist é clicado", () => {

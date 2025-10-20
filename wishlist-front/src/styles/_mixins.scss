@@ -1,4 +1,5 @@
-@use './_variables' as *;
+@use './_colors' as *;
+@use './_dimens' as *;
 
 @mixin grid-responsive {
   display: grid;

@@ -1,4 +1,5 @@
 import type { Product } from "../../types/Product";
+import { memo, useCallback } from "react";
 import styles from "./ProductCard.module.scss";
 import RatingStars from "../RatingStars/RatingStars";
 import HeartIcon from "../../assets/icons/heart.svg?react";
@@ -11,7 +12,10 @@ interface ProductCardProps {
   isWishlistPage?: boolean;
 }
 
-export default function ProductCard({ product, isSaved, onToggle, isWishlistPage = false }: ProductCardProps) {
+export default memo(ProductCard);
+
+function ProductCard({ product, isSaved, onToggle, isWishlistPage = false }: ProductCardProps) {
+  const handleToggle = useCallback(() => onToggle(product), [onToggle, product]);
   const price = Number(product.priceInCents) / 100;
   const salePrice = Number(product.salePriceInCents) / 100;
   const hasDiscount = salePrice > 0 && salePrice < price;
@@ -22,7 +26,7 @@ export default function ProductCard({ product, isSaved, onToggle, isWishlistPage
         aria-label={isWishlistPage ? "Remover da wishlist" : (isSaved ? "Remover da wishlist" : "Salvar na wishlist")}
         className={`${styles.wishlistBtn} ${isSaved ? styles.active : ""} 
         ${isWishlistPage ? styles.removeMode : ""}`}
-        onClick={() => onToggle(product)}
+        onClick={handleToggle}
       >
         {isWishlistPage ? (
           <RemoveIcon className={styles.removeIcon} />

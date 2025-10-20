@@ -1,10 +1,31 @@
+import type { Product } from "../../types/Product";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import { useWishlist } from "../../hooks/useWishlist";
 import styles from "./Wishlist.module.scss";
 
 export default function Wishlist() {
-  const { wishlist, toggleProduct } = useWishlist();
+  const { wishlist, toggleProduct }: { wishlist: Product[]; toggleProduct: (product: Product) => void } = useWishlist();
+
+  function renderWishlist() {
+    if (wishlist.length === 0) {
+      return <p className={styles.state}>Nenhum produto salvo na wishlist.</p>;
+    }
+
+    return (
+      <div className={styles.grid}>
+        {wishlist.map((product: Product) => (
+          <ProductCard
+            key={product.code}
+            product={product}
+            isSaved
+            onToggle={toggleProduct}
+            isWishlistPage
+          />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <MainLayout 
@@ -13,23 +34,7 @@ export default function Wishlist() {
         { label: "Wishlist", to: "/wishlist" },
       ]}
     >
-      {wishlist.length === 0 && (
-        <p className={styles.state}>Nenhum produto salvo na wishlist.</p>
-      )}
-
-      {wishlist.length > 0 && (
-        <div className={styles.grid}>
-          {wishlist.map((product) => (
-            <ProductCard
-              key={product.code}
-              product={product}
-              isSaved={true}
-              onToggle={toggleProduct}
-              isWishlistPage={true}
-            />
-          ))}
-        </div>
-      )}
+      {renderWishlist()}
     </MainLayout>
   );
 }

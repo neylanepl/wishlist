@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import type { Product } from "../types/Product";
 import { normalizeProduct } from "../utils/formatters";
 
-export function useWishlist(): { wishlist: Product[]; toggleProduct: (product: Product) => void } {
+export function useWishlist(): { wishlist: Product[]; wishlistCodes: ReadonlySet<string>; toggleProduct: (product: Product) => void } {
   const [wishlist, setWishlist] = useState<Product[]>(() => {
     const raw = localStorage.getItem("wishlist");
     if (!raw) return [];
@@ -31,5 +31,9 @@ export function useWishlist(): { wishlist: Product[]; toggleProduct: (product: P
     }
   }, [wishlist]);
 
-  return useMemo(() => ({ wishlist, toggleProduct }), [wishlist, toggleProduct]);
+  const wishlistCodes = useMemo<ReadonlySet<string>>(() => {
+    return new Set(wishlist.map((p) => p.code));
+  }, [wishlist]);
+
+  return useMemo(() => ({ wishlist, wishlistCodes, toggleProduct }), [wishlist, wishlistCodes, toggleProduct]);
 }

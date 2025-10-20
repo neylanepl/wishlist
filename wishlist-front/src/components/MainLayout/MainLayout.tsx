@@ -5,8 +5,8 @@ import type { BreadcrumbItem } from "../Breadcrumb/Breadcrumb";
 import styles from "./MainLayout.module.scss";
 
 type MainLayoutProps = {
-  breadcrumbItems: BreadcrumbItem[]; // itens do breadcrumb
-  children: React.ReactNode; // conteúdo da página
+  breadcrumbItems: BreadcrumbItem[];
+  children: React.ReactNode;
 };
 
 export default function MainLayout({ breadcrumbItems, children }: MainLayoutProps) {

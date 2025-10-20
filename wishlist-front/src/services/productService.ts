@@ -1,9 +1,11 @@
 import { api } from "./api";
+import type { ProductsResponseDTO } from "../types/Product";
 import type { ProductsResponse } from "../types/Product";
+import { normalizeProduct } from "../types/Product";
 
 export async function getProducts(): Promise<ProductsResponse> {
   try {
-    const response = await api.get<ProductsResponse>("/products");
+    const response = await api.get<ProductsResponseDTO>("/products");
     const data = response.data;
 
     if (!Array.isArray(data.products)) {
@@ -16,7 +18,14 @@ export async function getProducts(): Promise<ProductsResponse> {
       };
     }
 
-    return data;
+    const normalized = data.products.map(normalizeProduct);
+
+    return {
+      total: data.total,
+      pageSize: data.pageSize,
+      totalPages: data.totalPages,
+      products: normalized,
+    };
   } catch (error) {
     console.error("Erro ao buscar produtos:", error);
     return {

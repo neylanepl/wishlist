@@ -6,8 +6,8 @@ describe("ProductCard", () => {
   const mockProduct: Product = {
     code: "test-code",
     name: "Test Product",
-    priceInCents: "10000", // Converted to string
-    salePriceInCents: "8000", // Converted to string
+    priceInCents: 10000,
+    salePriceInCents: 8000,
     image: "test-image.jpg",
     rating: 4.5,
     stockAvailable: true,

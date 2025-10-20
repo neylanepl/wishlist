@@ -1,12 +1,17 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import type { Product } from "../types/Product";
+import { normalizeProduct } from "../types/Product";
 
 export function useWishlist() {
   const [wishlist, setWishlist] = useState<Product[]>(() => {
     const raw = localStorage.getItem("wishlist");
     if (!raw) return [];
     try {
-      return JSON.parse(raw) as Product[];
+      const parsed = JSON.parse(raw) as unknown[];
+
+      // Normalize every persisted item — normalizeProduct handles both DTOs (strings)
+      // and already-normalized domain products (numbers).
+      return parsed.map(normalizeProduct);
     } catch (e) {
       console.warn("Invalid wishlist data in localStorage, resetting to empty.", e);
       localStorage.removeItem("wishlist");

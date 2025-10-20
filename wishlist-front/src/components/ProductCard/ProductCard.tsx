@@ -16,8 +16,8 @@ export default memo(ProductCard);
 
 function ProductCard({ product, isSaved, onToggle, isWishlistPage = false }: ProductCardProps) {
   const handleToggle = useCallback(() => onToggle(product), [onToggle, product]);
-  const price = Number(product.priceInCents) / 100;
-  const salePrice = Number(product.salePriceInCents) / 100;
+  const price = product.priceInCents / 100;
+  const salePrice = product.salePriceInCents / 100;
   const hasDiscount = salePrice > 0 && salePrice < price;
 
   return (

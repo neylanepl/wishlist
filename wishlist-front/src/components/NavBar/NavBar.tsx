@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import styles from "./NavBar.module.scss";
 import LogoNetshoes from "../../assets/logo-netshoes.svg";
 import HeartIcon from "../../assets/icons/heart.svg?react";
-export default function NavBar() {
 
+export default function NavBar() {
   return (
     <header className={styles.navbar} role="banner" aria-label="Navegação principal">
         <div className={styles.logo}>

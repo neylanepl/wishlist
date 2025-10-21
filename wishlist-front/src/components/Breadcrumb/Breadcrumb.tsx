@@ -6,9 +6,9 @@ export type BreadcrumbItem = {
   to?: string;
 };
 
-interface BreadcrumbProps {
+type BreadcrumbProps = {
   items: BreadcrumbItem[];
-}
+};
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   return (

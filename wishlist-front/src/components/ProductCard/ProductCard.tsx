@@ -6,12 +6,12 @@ import { formatCurrency } from "../../utils/formatters";
 import HeartIcon from "../../assets/icons/heart.svg?react";
 import RemoveIcon from "../../assets/icons/remove.svg?react";
 
-interface ProductCardProps {
+type ProductCardProps = {
   product: Product;
   isSaved: boolean;
   onToggle: (product: Product) => void;
   isWishlistPage?: boolean;
-}
+};
 
 export default memo(ProductCard);
 

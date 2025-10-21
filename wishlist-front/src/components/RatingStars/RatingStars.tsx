@@ -2,19 +2,20 @@ import styles from "./RatingStars.module.scss";
 import RatingIcon from "../../assets/icons/rating.svg?react";
 import HalfRatingIcon from "../../assets/icons/half-rating.svg?react";
 
-interface RatingStarsProps {
+type RatingStarsProps = {
   value: number;
   max?: number;
-}
+};
 
-function getStarStatus(star: number, value: number): "full" | "half" | "empty" {
+type StarStatus = "full" | "half" | "empty";
+
+function getStarStatus(star: number, value: number): StarStatus {
   if (star <= Math.floor(value)) return "full";
   if (star - value <= 0.5) return "half";
   return "empty";
 }
-
-const renderStarIcon = (type: "full" | "half" | "empty") => {
-  switch (type) {
+const renderStarIcon = (status: StarStatus) => {
+  switch (status) {
     case "half":
       return <HalfRatingIcon role="img" aria-label="star half" className={`${styles.star} ${styles.half}`} />;
     case "full":

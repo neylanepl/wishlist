@@ -29,14 +29,15 @@
   gap: 0.25rem;
   color: $ns-white;
   text-decoration: none;
+  font-weight: 600;
 
   .iconHeart {
-    font-size: 0.75rem;
     width: 1.875rem;
     height: 1.875rem;
     path {
       stroke: $ns-white;
       fill: none;
+      stroke-width: 1.2 !important;
     }
   }
 

@@ -84,7 +84,10 @@ describe("Página Wishlist", () => {
         });
 
         cy.contains('Nenhum produto salvo na wishlist.').should('be.visible');
-        cy.window().its('localStorage').invoke('getItem', 'wishlist').should('be.null');
+		cy.window().its('localStorage').invoke('getItem', 'wishlist').then((item) => {
+			const saved = JSON.parse(item || '[]');
+			cy.wrap(saved).should('have.length', 0);
+		});
     });
 
 	it("exibe breadcrumb com link para Home e o rótulo Wishlist", () => {

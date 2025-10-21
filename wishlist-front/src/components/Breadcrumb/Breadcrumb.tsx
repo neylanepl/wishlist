@@ -6,29 +6,34 @@ export type BreadcrumbItem = {
   to?: string;
 };
 
-interface BreadcrumbProps {
+type BreadcrumbProps = {
   items: BreadcrumbItem[];
-}
+};
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav className={styles.breadcrumb} aria-label="breadcrumb">
-      {items.map((item, index) => {
-        const isLast = index === items.length - 1;
-        return (
-          <span
-            key={index}
-            className={`${styles.item} ${isLast ? styles.active : ""}`}
-          >
-            {item.to && !isLast ? (
-              <Link to={item.to}>{item.label}</Link>
-            ) : (
-              <span>{item.label}</span>
-            )}
-            {!isLast && <span className={styles.separator}>/</span>}
-          </span>
-        );
-      })}
+      <ol>
+        {items.map((item, index) => {
+          const isLast = index === items.length - 1;
+          return (
+            <li
+              key={index}
+              className={`${styles.item} ${isLast ? styles.active : ""}`}
+              aria-current={isLast ? "page" : undefined}
+            >
+              {item.to && !isLast ? (
+                <Link to={item.to}>{item.label}</Link>
+              ) : (
+                <span>{item.label}</span>
+              )}
+              {!isLast && (
+                <span className={styles.separator} aria-hidden="true">/</span>
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 }

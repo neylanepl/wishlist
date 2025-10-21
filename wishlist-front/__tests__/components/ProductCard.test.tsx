@@ -1,13 +1,13 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import ProductCard from "../../src/components/ProductCard/ProductCard";
-import type { Product } from "../../src/types/Product";
+import type { Product } from "../../src/types/product";
 
 describe("ProductCard", () => {
   const mockProduct: Product = {
     code: "test-code",
     name: "Test Product",
-    priceInCents: "10000", // Converted to string
-    salePriceInCents: "8000", // Converted to string
+    priceInCents: 10000,
+    salePriceInCents: 8000,
     image: "test-image.jpg",
     rating: 4.5,
     stockAvailable: true,
@@ -29,7 +29,7 @@ describe("ProductCard", () => {
     );
 
     expect(screen.getByText("Test Product")).toBeInTheDocument();
-    expect(screen.getByText("R$ 100.00")).toBeInTheDocument();
+    expect(screen.getByText("R$ 100,00")).toBeInTheDocument();
     expect(screen.getByAltText("Test Product")).toBeInTheDocument();
   });
 
@@ -42,8 +42,8 @@ describe("ProductCard", () => {
       />
     );
 
-    expect(screen.getByText("R$ 100.00")).toBeInTheDocument();
-    expect(screen.getByText("R$ 80.00")).toBeInTheDocument();
+    expect(screen.getByText("R$ 100,00")).toBeInTheDocument();
+    expect(screen.getByText("R$ 80,00")).toBeInTheDocument();
   });
 
   it("chama onToggle quando o botão da wishlist é clicado", () => {

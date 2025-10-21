@@ -93,8 +93,8 @@ describe("Fluxos de usuário - UI e interações", () => {
       cy.get('svg[aria-label="star half"]').should('exist');
 
       // preços (antigo e atual)
-      cy.contains('R$ 100.00').should('be.visible');
-      cy.contains('R$ 50.00').should('be.visible');
+  cy.contains('R$ 100,00').should('be.visible');
+  cy.contains('R$ 50,00').should('be.visible');
     });
   });
 

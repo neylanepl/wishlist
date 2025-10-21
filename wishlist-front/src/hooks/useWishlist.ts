@@ -1,36 +1,45 @@
-import { useState, useEffect } from "react";
-import type { Product } from "../types/Product";
+import { useState, useEffect, useCallback, useMemo } from "react";
+import type { Product } from "../types/product";
+import { normalizeProduct } from "../utils/formatters";
 
-export function useWishlist() {
-  const [wishlist, setWishlist] = useState<Product[]>([]);
+export type UseWishlistReturn = {
+  wishlist: Product[];
+  wishlistCodes: ReadonlySet<string>;
+  toggleProduct: (product: Product) => void;
+};
 
-  useEffect(() => {
-    const stored = localStorage.getItem("wishlist");
-    if (stored) {
-      try {
-        setWishlist(JSON.parse(stored));
-      } catch (e) {
-        // If corrupted, ignore and start with empty wishlist
-        console.warn("Invalid wishlist data in localStorage, resetting to empty.", e);
-        setWishlist([]);
-        localStorage.removeItem("wishlist");
-      }
+export function useWishlist(): UseWishlistReturn {
+  const [wishlist, setWishlist] = useState<Product[]>(() => {
+    const raw = localStorage.getItem("wishlist");
+    if (!raw) return [];
+    try {
+      const parsed = JSON.parse(raw) as unknown[];
+      return parsed.map(normalizeProduct);
+    } catch (e) {
+      console.warn("Invalid wishlist data in localStorage, resetting to empty.", e);
+      localStorage.removeItem("wishlist");
+      return [];
     }
+  });
+
+  const toggleProduct = useCallback((product: Product) => {
+    setWishlist((prev) => {
+      const exists = prev.find((p) => p.code === product.code);
+      return exists ? prev.filter((p) => p.code !== product.code) : [...prev, product];
+    });
   }, []);
 
-  function saveWishlist(newList: Product[]) {
-    setWishlist(newList);
-    localStorage.setItem("wishlist", JSON.stringify(newList));
-  }
+  useEffect(() => {
+    try {
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    } catch (e) {
+      console.warn("Failed to persist wishlist to localStorage", e);
+    }
+  }, [wishlist]);
 
-  function toggleProduct(product: Product) {
-    const exists = wishlist.find((p) => p.code === product.code);
-    const updated = exists
-      ? wishlist.filter((p) => p.code !== product.code)
-      : [...wishlist, product];
+  const wishlistCodes = useMemo<ReadonlySet<string>>(() => {
+    return new Set(wishlist.map((p) => p.code));
+  }, [wishlist]);
 
-    saveWishlist(updated);
-  }
-
-  return { wishlist, toggleProduct };
+  return useMemo(() => ({ wishlist, wishlistCodes, toggleProduct }), [wishlist, wishlistCodes, toggleProduct]);
 }

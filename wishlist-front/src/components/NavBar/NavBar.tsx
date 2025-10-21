@@ -1,42 +1,25 @@
-import { useState } from "react";
+import ProfileMenu from "../ProfileMenu/ProfileMenu";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.scss";
-import LogoNetshoes from "../../assets/logo-netshoes.svg"; 
+import LogoNetshoes from "../../assets/logo-netshoes.svg";
 import HeartIcon from "../../assets/icons/heart.svg?react";
-import ProfileIcon from "../../assets/icons/profile.svg?react";
+
 export default function NavBar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
-    <header className={styles.navbar}>
-      <div className={styles.logo}>
-        <img src={LogoNetshoes} alt="Netshoes" />
-      </div>
-
-      <div className={styles.actions}>
-        <Link to="/wishlist" className={styles.wishlist}>
-          <HeartIcon className={styles.iconHeart} />
-          Wishlist
-        </Link>
-
-        <div
-          className={styles.profile}
-          onMouseEnter={() => setMenuOpen(true)}
-          onMouseLeave={() => setMenuOpen(false)}
-          tabIndex={0}
-        >
-          <button className={styles.profileBtn}><ProfileIcon className={styles.iconUser} /></button>
-        
-          {menuOpen && (
-            <ul className={styles.dropdown}>
-              <li><a href="#">Entrar</a></li>
-              <li><a href="#">Minha Conta</a></li>
-              <li><a href="#">Endereços</a></li>
-              <li><a href="#">Minha Netshoes</a></li>
-            </ul>
-          )}
+    <header className={styles.navbar} role="banner" aria-label="Navegação principal">
+        <div className={styles.logo}>
+          <Link to="/" aria-label="Página inicial">
+            <img src={LogoNetshoes} alt="Netshoes" />
+          </Link>
         </div>
-      </div>
+        <div className={styles.actions}>
+          <Link to="/wishlist" className={styles.wishlist} aria-label="wishlist">
+            <HeartIcon className={styles.iconHeart} />
+            Wishlist
+          </Link>
+          <ProfileMenu />
+        </div>
     </header>
+
   );
 }

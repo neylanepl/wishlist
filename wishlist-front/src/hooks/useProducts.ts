@@ -1,8 +1,15 @@
 import { useEffect, useState, useCallback } from "react";
 import { getProducts } from "../services/productService";
-import type { Product } from "../types/Product";
+import type { Product } from "../types/product";
 
-export function useProducts() {
+export type UseProductsReturn = {
+  products: Product[];
+  isLoading: boolean;
+  error: string | null;
+  refetch: () => Promise<void>;
+};
+
+export function useProducts(): UseProductsReturn {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

@@ -1,0 +1,90 @@
+@use "../../styles/_colors" as *;
+@use "../../styles/_dimens" as *;
+@use "../../styles/_mixins" as *;
+
+.profileBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: $ns-white;
+	border: none;
+	border-radius: $radius-lg;
+	cursor: pointer;
+	padding: 0.125rem;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.profile {
+	position: relative;
+	cursor: pointer;
+
+	.iconUser {
+		font-size: 0.75rem;
+		width: 1.5625rem;
+		height: 1.5625rem;
+		path {
+			stroke: $ns-purple;
+			fill: $ns-purple;
+		}
+	}
+
+	.dropdown {
+		position: absolute;
+		top: 1.75rem;
+		right: 0;
+		background: $ns-white;
+		color: $ns-gray-900;
+		border-radius: $radius-md;
+		box-shadow: 0 0.0625rem 0.25rem 0.0625rem $ns-gray-300;
+		list-style: none;
+		padding: 0.5rem 0;
+		min-width: 7.6rem;
+		z-index: 10;
+		font-size: 0.875rem;
+
+		&::before {
+			position: absolute;
+			top: -0.75rem;
+			right: 2%;
+			display: inline-block;
+			border-right: 0.8125rem solid transparent;
+			border-bottom: 0.8125rem solid $ns-white;
+			border-left: 0.8125rem solid transparent;
+			border-bottom-color: $ns-white;
+			content: '';
+		}
+
+		li {
+			padding: 0.0625rem 0.625rem;
+
+			a,
+			button {
+				text-decoration: none;
+				color: $ns-gray-900;
+				display: block;
+
+				/* Reset native button styles so buttons look like links */
+				background: transparent;
+				border: none;
+				padding: 0;
+				width: 100%;
+				text-align: left;
+				cursor: pointer;
+				font: inherit;
+			}
+
+			a:hover,
+			button:hover {
+				color: $ns-purple;
+			}
+
+			a:hover,
+			button:focus {
+				outline: none;
+			}
+		}
+	}
+}

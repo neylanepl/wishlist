@@ -1,3 +1,4 @@
+import type { Product } from "../../types/product";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import { useWishlist } from "../../hooks/useWishlist";
@@ -13,19 +14,17 @@ export default function Wishlist() {
         { label: "Wishlist", to: "/wishlist" },
       ]}
     >
-      {wishlist.length === 0 && (
+      {wishlist.length === 0 ? (
         <p className={styles.state}>Nenhum produto salvo na wishlist.</p>
-      )}
-
-      {wishlist.length > 0 && (
+      ) : (
         <div className={styles.grid}>
-          {wishlist.map((product) => (
+          {wishlist.map((product: Product) => (
             <ProductCard
               key={product.code}
               product={product}
-              isSaved={true}
+              isSaved
               onToggle={toggleProduct}
-              isWishlistPage={true}
+              isWishlistPage
             />
           ))}
         </div>

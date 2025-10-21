@@ -1,28 +1,35 @@
-import type { Product } from "../../types/Product";
+import type { Product } from "../../types/product";
+import { memo, useCallback } from "react";
 import styles from "./ProductCard.module.scss";
 import RatingStars from "../RatingStars/RatingStars";
+import { formatCurrency } from "../../utils/formatters";
 import HeartIcon from "../../assets/icons/heart.svg?react";
 import RemoveIcon from "../../assets/icons/remove.svg?react";
 
-interface ProductCardProps {
+type ProductCardProps = {
   product: Product;
   isSaved: boolean;
   onToggle: (product: Product) => void;
   isWishlistPage?: boolean;
-}
+};
 
-export default function ProductCard({ product, isSaved, onToggle, isWishlistPage = false }: ProductCardProps) {
-  const price = Number(product.priceInCents) / 100;
-  const salePrice = Number(product.salePriceInCents) / 100;
-  const hasDiscount = salePrice > 0 && salePrice < price;
+export default memo(ProductCard);
+
+function ProductCard({ product, isSaved, onToggle, isWishlistPage = false }: ProductCardProps) {
+  const handleToggle = useCallback(() => onToggle(product), [onToggle, product]);
+  const priceInCents = product.priceInCents;
+  const salePriceInCents = product.salePriceInCents;
+  const hasDiscount = salePriceInCents > 0 && salePriceInCents < priceInCents;
 
   return (
     <article className={styles.card} aria-label={product.name}>
       <button
+        type="button"
+        aria-pressed={isSaved}
         aria-label={isWishlistPage ? "Remover da wishlist" : (isSaved ? "Remover da wishlist" : "Salvar na wishlist")}
         className={`${styles.wishlistBtn} ${isSaved ? styles.active : ""} 
         ${isWishlistPage ? styles.removeMode : ""}`}
-        onClick={() => onToggle(product)}
+        onClick={handleToggle}
       >
         {isWishlistPage ? (
           <RemoveIcon className={styles.removeIcon} />
@@ -43,8 +50,8 @@ export default function ProductCard({ product, isSaved, onToggle, isWishlistPage
       <RatingStars value={product.rating} />
 
       <div className={styles.prices}>
-        {hasDiscount && <span className={styles.old}>R$ {price.toFixed(2)}</span>}
-        <span className={styles.current}>R$ {(hasDiscount ? salePrice : price).toFixed(2)}</span>
+        {hasDiscount && <span className={styles.old}>{formatCurrency(product.priceInCents)}</span>}
+        <span className={styles.current}>{formatCurrency(hasDiscount ? product.salePriceInCents : product.priceInCents)}</span>
       </div>
     </article>
   );

@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "types": [
+      "jest", // Tipos globais para 'describe', 'it', 'expect'
+      "@testing-library/jest-dom", // Tipos para matchers como 'toBeInTheDocument'
+      "node", // Tipos do Node.js para global, require, etc.
+      "vite/client"
+    ],
+    
+    // Se estiver usando Módulos ES (import/export), mude a resolução de módulos
+    "module": "ESNext", // Jest funciona melhor com CommonJS
+    "moduleResolution": "node",
+    "verbatimModuleSyntax": false // Desative esta opção para que o Jest funcione
+  },
+  
+  "include": ["src", "__tests__/**/*", "jest.config.ts"] 
+}

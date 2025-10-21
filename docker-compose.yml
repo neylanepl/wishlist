@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: ./wishlist-api
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+
+  front:
+    build:
+      context: ./wishlist-front
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+    environment:
+      - NODE_ENV=development
+    # ensure Vite binds to all interfaces so the host can access the dev server
+    command: ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

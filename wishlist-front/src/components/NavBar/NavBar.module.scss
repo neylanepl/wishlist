@@ -1,0 +1,48 @@
+@use "../../styles/_colors" as *;
+@use "../../styles/_dimens" as *;
+@use "../../styles/_mixins" as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $ns-purple;
+  padding: 1.5rem 5.625%;
+  color: $ns-white;
+  position: relative;
+}
+
+.logo img {
+  height: 1.625rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  margin: 0 0.3rem;
+  gap: clamp(0.3rem, 5vw, 5rem);
+}
+
+.wishlist {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: $ns-white;
+  text-decoration: none;
+  font-weight: 600;
+
+  .iconHeart {
+    width: 1.875rem;
+    height: 1.875rem;
+    path {
+      stroke: $ns-white;
+      fill: none;
+      stroke-width: 1.2 !important;
+    }
+  }
+
+  &:hover {
+    color: $ns-white;
+  }
+}
+

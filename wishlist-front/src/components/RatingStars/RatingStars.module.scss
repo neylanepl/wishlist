@@ -1,0 +1,39 @@
+@use "../../styles/_colors" as *;
+@use "../../styles/_dimens" as *;
+@use "../../styles/_mixins" as *;
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.star {
+  font-size: 1rem;
+  position: relative;
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: $ns-yellow;
+  &:not(.half) {
+    path {
+      stroke: $ns-gray-200;
+      fill: $ns-gray-200;
+    }
+  }
+
+  &.full {
+    path{
+      fill: currentColor;
+      stroke: currentColor;
+    }
+  }
+
+}
+
+.value {
+  font-size: 0.875rem;
+  color: $ns-gray-700;
+  font-weight: 500;
+  position: relative;
+  top: 0.0625rem;
+}

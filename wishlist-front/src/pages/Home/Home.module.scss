@@ -1,0 +1,26 @@
+@use "../../styles/_colors" as *;
+@use "../../styles/_dimens" as *;
+@use "../../styles/_mixins" as *;
+@use "../../styles/global";
+
+.grid {
+  padding: 1rem 3.75%;
+  @include grid-responsive;
+}
+
+.state {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
+  margin: 0 1.5rem;
+  color: $ns-gray-500;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
+  margin: 0 1.5rem;
+  color: $ns-danger;
+}
+

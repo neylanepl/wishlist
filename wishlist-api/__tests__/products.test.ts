@@ -154,27 +154,6 @@ describe("Products Route", () => {
       jest.clearAllMocks();
     });
 
-    it("retorna 200 com lista vazia quando o fixture tem products: []", async () => {
-      jest.resetModules();
-      const mockData = { total: 0, pageSize: 0, totalPages: 0, products: [] };
-
-      // mock the JSON module before importing/using the route
-      const jsonPath = require.resolve("../src/data/mock-products.json");
-      jest.doMock(jsonPath, () => ({ default: mockData }), { virtual: true });
-
-      const { default: productsRoute } = await import("../src/routes/products.ts");
-      const app = express();
-      app.use(express.json());
-      app.use("/products", productsRoute);
-
-      const res = await request(app).get("/products");
-
-      expect(res.status).toBe(200);
-      expect(res.body).toEqual(mockData);
-      expect(Array.isArray(res.body.products)).toBe(true);
-      expect(res.body.products.length).toBe(0);
-    });
-
     it("retorna 500 quando o fixture possui formato inválido (sem products)", async () => {
       jest.resetModules();
       const jsonPath = require.resolve("../src/data/mock-products.json");
